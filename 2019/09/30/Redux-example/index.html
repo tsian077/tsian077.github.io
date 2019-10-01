@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="tensorflow,">
+  <meta name="keywords" content="React,">
 
 
 
@@ -79,18 +79,20 @@
 
 
 
-<meta name="description" content="This is write something about tensorflow">
-<meta name="keywords" content="tensorflow">
+<meta name="description" content="這篇文章將會大家了解一下Redux如何在React中運作，首先我們要先安裝create-react-app這個套件，這個套件可以幫我們快速地產生一個簡單的React專案．，這邊我會用npm來安裝，而這段程式碼會將create-react-app安裝在你的電腦之中．">
+<meta name="keywords" content="React">
 <meta property="og:type" content="article">
-<meta property="og:title" content="test">
-<meta property="og:url" content="http://yoursite.com/2019/09/30/test/index.html">
+<meta property="og:title" content="Redux_Simple_example">
+<meta property="og:url" content="http://yoursite.com/2019/09/30/Redux-example/index.html">
 <meta property="og:site_name" content="Jimmy&#39;s blog">
-<meta property="og:description" content="This is write something about tensorflow">
+<meta property="og:description" content="這篇文章將會大家了解一下Redux如何在React中運作，首先我們要先安裝create-react-app這個套件，這個套件可以幫我們快速地產生一個簡單的React專案．，這邊我會用npm來安裝，而這段程式碼會將create-react-app安裝在你的電腦之中．">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:updated_time" content="2019-09-30T08:37:24.095Z">
+<meta property="og:image" content="http://yoursite.com/2019/09/30/Redux-example/react.png">
+<meta property="og:updated_time" content="2019-10-01T09:22:33.224Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="test">
-<meta name="twitter:description" content="This is write something about tensorflow">
+<meta name="twitter:title" content="Redux_Simple_example">
+<meta name="twitter:description" content="這篇文章將會大家了解一下Redux如何在React中運作，首先我們要先安裝create-react-app這個套件，這個套件可以幫我們快速地產生一個簡單的React專案．，這邊我會用npm來安裝，而這段程式碼會將create-react-app安裝在你的電腦之中．">
+<meta name="twitter:image" content="http://yoursite.com/2019/09/30/Redux-example/react.png">
 
 
 
@@ -120,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/09/30/test/">
+  <link rel="canonical" href="http://yoursite.com/2019/09/30/Redux-example/">
 
 
 
 
 
-  <title>test | Jimmy's blog</title>
+  <title>Redux_Simple_example | Jimmy's blog</title>
   
 
 
@@ -265,7 +267,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/30/test/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/30/Redux-example/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jimmy">
@@ -282,7 +284,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">test</h1>
+          <h1 class="post-title" itemprop="name headline">Redux_Simple_example</h1>
         
 
         <div class="post-meta">
@@ -294,7 +296,7 @@
               
                 <span class="post-meta-item-text">發表於</span>
               
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2019-09-30T16:30:16+08:00">
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2019-09-30T17:11:07+08:00">
                 2019-09-30
               </time>
             
@@ -332,7 +334,42 @@
       
 
       
-        <h1 id="This-is-write-something-about-tensorflow"><a href="#This-is-write-something-about-tensorflow" class="headerlink" title="This is write something about tensorflow"></a>This is write something about tensorflow</h1>
+        <p>這篇文章將會大家了解一下Redux如何在React中運作，首先我們要先安裝<code>create-react-app</code>這個套件，這個套件可以幫我們快速地產生一個簡單的React專案．<br>，這邊我會用npm來安裝，而這段程式碼會將<code>create-react-app</code>安裝在你的電腦之中．</p>
+<a id="more"></a>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install create-react-app --save</span><br></pre></td></tr></table></figure>
+
+<p>現在我們用<code>create-react-app redux_sample</code>來創一個新的專案</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd redux_sample</span><br><span class="line">npm start</span><br></pre></td></tr></table></figure>
+
+<pre><code>打開瀏覽器輸入localhost:3000就可以看到</code></pre><img src="/2019/09/30/Redux-example/react.png">
+
+<p>這篇文章會著重在redux的使用，首先我們先創一個簡單的h1標籤並加上state．打開<code>src/App.js</code>，這個App.js檔的程式碼就是目前我們在網頁上看到的頁面，因為是在js中寫html所以我們稱這種格式為jsx，這種格式還必須要透過類似babel來編譯才能做使用．<br><code>App.js</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> logo <span class="keyword">from</span> <span class="string">'./logo.svg'</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">'./App.css'</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">App</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div className=<span class="string">"App"</span>&gt;</span><br><span class="line">      &lt;header className=<span class="string">"App-header"</span>&gt;</span><br><span class="line">        &lt;img src=&#123;logo&#125; className=<span class="string">"App-logo"</span> alt=<span class="string">"logo"</span> /&gt;</span><br><span class="line">        &lt;p&gt;</span><br><span class="line">          Edit &lt;code&gt;src/App.js&lt;<span class="regexp">/code&gt; and save to reload.</span></span><br><span class="line"><span class="regexp">        &lt;/</span>p&gt;</span><br><span class="line">        &lt;a</span><br><span class="line">          className=<span class="string">"App-link"</span></span><br><span class="line">          href=<span class="string">"https://reactjs.org"</span></span><br><span class="line">          target=<span class="string">"_blank"</span></span><br><span class="line">          rel=<span class="string">"noopener noreferrer"</span></span><br><span class="line">        &gt;</span><br><span class="line">          Learn React</span><br><span class="line">        &lt;<span class="regexp">/a&gt;</span></span><br><span class="line"><span class="regexp">      &lt;/</span>header&gt;</span><br><span class="line">    &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  );</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp">export default App;</span></span><br></pre></td></tr></table></figure>
+
+<p>我們將div中的元素全部刪掉並改成<code>&lt;h1&gt;hello&lt;/h1&gt;</code>,我們就可以在我們的網頁上看到hello，接下來我們新增一個state，而因為我們需要使用到React的組件，因此我們必須要將function App改為繼承React的component．<br><code>App.js</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> logo <span class="keyword">from</span> <span class="string">'./logo.svg'</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">'./App.css'</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">constructor</span>(props)&#123;</span><br><span class="line">    <span class="keyword">super</span>(props);</span><br><span class="line">    <span class="keyword">this</span>.state=&#123;</span><br><span class="line">      name:<span class="string">'JImmy'</span></span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">  render()</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;div className=<span class="string">"App"</span>&gt;</span><br><span class="line">        &lt;h1&gt;hello &#123;<span class="keyword">this</span>.state.name&#125;&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">      &lt;/</span>div&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> App;</span><br></pre></td></tr></table></figure>
+
+<p>接下來我們需要新增一個action.js，action是當我們的buton有onclick()的動作或是input有onchange()時，傳遞一個物件給reducer,而reducer就可以依據看是哪一個action傳回來的type來繼續接下來的動作．因此我們來新增一個action.js而在此之前我們必須先安裝redux的套件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i redux react-redux --save</span><br></pre></td></tr></table></figure>
+
+<p>新增兩個action並export出來．之後會include到App.js之中．<br><code>action.js</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> InputChange =<span class="function">(<span class="params">text</span>) =&gt;</span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span>&#123;</span><br><span class="line">        type: <span class="string">'InputChange'</span>,</span><br><span class="line">        payload:text</span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>接下來我們要新增一個reduer用來接收action．新增一個reducer.js，</p>
+<p><code>reducer.js</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> initialState =&#123;</span><br><span class="line">    wordchange:<span class="string">''</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> setClick=<span class="function">(<span class="params">state=initialState,action=&#123;&#125;</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">switch</span>(action.type)&#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">'InputChange'</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">Object</span>.assign(&#123;&#125;,state,&#123;<span class="attr">wordchange</span>:action.payload&#125;);</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            <span class="keyword">return</span> state;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>redux的流程就是，當html的input或是button有function被觸發時，就會傳遞一個action到reducer，而reducer會用一個swich來判斷action.type確認是哪一個action所觸發的．而我們也會寫一個initialState的物件來初始化state．reducer必須被store來管理，而一個專案裡面通常只會有一個store</p>
+<p>接下來我們會更改App.js的程式碼，這邊會引入action和redux中的connect，而我們需要再新增兩個function <code>mapStateToProps</code>和<code>mapDispatchToProps</code>，將store和函數映射成props．最後在export default時運用connect將其與App串連起來．</p>
+<p><code>App.js</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> logo <span class="keyword">from</span> <span class="string">'./logo.svg'</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">'./App.css'</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//add connect %% action</span></span><br><span class="line"><span class="keyword">import</span> &#123;connect&#125; <span class="keyword">from</span> <span class="string">'react-redux'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;InputChange&#125; <span class="keyword">from</span> <span class="string">'./action'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> mapStateToProps = <span class="function"><span class="params">state</span> =&gt;</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(state)</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    </span><br><span class="line">    wordchange:state.wordchange</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> mapDispatchToProps =<span class="function">(<span class="params">dispatch</span>)=&gt;</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    </span><br><span class="line">    onInputChange:<span class="function">(<span class="params">event</span>)=&gt;</span>dispatch(InputChange(event.target.value))</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">constructor</span>(props)&#123;</span><br><span class="line">    <span class="keyword">super</span>(props);</span><br><span class="line">    <span class="keyword">this</span>.state=&#123;</span><br><span class="line">      name:<span class="string">'JImmy'</span></span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">  render()</span><br><span class="line">  &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;div className=<span class="string">"App"</span>&gt;</span><br><span class="line">        &lt;h1&gt;hello&#123;<span class="keyword">this</span>.state.name&#125;&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">        &lt;input className="pa3 ba"</span></span><br><span class="line"><span class="regexp">               placeholder="Input Change"</span></span><br><span class="line"><span class="regexp">               onChange=&#123;this.props.onInputChange&#125;/</span>&gt;</span><br><span class="line">        </span><br><span class="line">      &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    );</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">  </span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">export default connect(mapStateToProps, mapDispatchToProps)(App);</span></span><br></pre></td></tr></table></figure>
+
+<p>最後我們必須要在<code>index.js</code>中創一個新的store用來儲存reducer．在使用Redux時必須要用Provider把我們的App給包起來．createStore用來新增我們寫的reducer.js</p>
+<p><code>index.js</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> ReactDOM <span class="keyword">from</span> <span class="string">'react-dom'</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">'./index.css'</span>;</span><br><span class="line"><span class="keyword">import</span> App <span class="keyword">from</span> <span class="string">'./App'</span>;</span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> serviceWorker <span class="keyword">from</span> <span class="string">'./serviceWorker'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">///add</span></span><br><span class="line"><span class="keyword">import</span> &#123;Provider&#125; <span class="keyword">from</span> <span class="string">'react-redux'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;createStore&#125; <span class="keyword">from</span> <span class="string">'redux'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;setClick&#125; <span class="keyword">from</span> <span class="string">'./reducer'</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> store = createStore(setClick);</span><br><span class="line"></span><br><span class="line">ReactDOM.render(</span><br><span class="line">&lt;Provider store=&#123;store&#125;&gt;</span><br><span class="line">&lt;App /&gt;</span><br><span class="line">&lt;<span class="regexp">/Provider&gt;, document.getElementById('root'));</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/ If you want your app to work offline and load faster, you can change</span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/ unregister() to register() below. Note this comes with some pitfalls.</span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/ Learn more about service workers: https:/</span><span class="regexp">/bit.ly/</span>CRA-PWA</span><br><span class="line">serviceWorker.unregister();</span><br></pre></td></tr></table></figure>
+
+
       
     </div>
     
@@ -349,7 +386,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/tensorflow/" rel="tag"># tensorflow</a>
+            <a href="/tags/React/" rel="tag"># React</a>
           
         </div>
       
@@ -362,15 +399,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2019/09/30/test/" rel="next" title="test">
+                <i class="fa fa-chevron-left"></i> test
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/09/30/Redux-example/" rel="prev" title="Redux_Simple_example">
-                Redux_Simple_example <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -422,17 +459,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目錄
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            本站概覽
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -499,22 +527,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#This-is-write-something-about-tensorflow"><span class="nav-number">1.</span> <span class="nav-text">This is write something about tensorflow</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
